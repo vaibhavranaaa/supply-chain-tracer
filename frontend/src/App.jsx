@@ -19,7 +19,7 @@ const TABS = [
 ];
 
 export default function App({ user, onLogout }) {
-  const isAdmin = user?.email === "metamask";
+  const isAdmin = user?.email === "admin";
 
   const [account, setAccount] = useState(null);
   const [contract, setContract] = useState(null);

@@ -10,11 +10,19 @@ export default function Root() {
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (u) => {
-      setUser(u);
+      if (u) {
+        setUser({ email: u.email, type: "email" });
+      } else {
+        setUser(null);
+      }
       setChecking(false);
     });
     return unsub;
   }, []);
+
+  const handleMetaMask = () => {
+    setUser({ email: "metamask", type: "admin" });
+  };
 
   const handleLogout = async () => {
     await signOut(auth);
@@ -27,7 +35,7 @@ export default function Root() {
     </div>
   );
 
-  if (!user) return <AuthPage onLogin={() => setUser({ email: "metamask" })} />;
+  if (!user) return <AuthPage onLogin={handleMetaMask} />;
 
   return <App user={user} onLogout={handleLogout} />;
 }
