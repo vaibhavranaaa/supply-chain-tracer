@@ -2,12 +2,10 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA5WB_r7_J55fpY4ZEyCmbeKsuZL8BEg10",
-  authDomain: "chainvault-c0723.firebaseapp.com",
-  projectId: "chainvault-c0723",
-  storageBucket: "chainvault-c0723.firebasestorage.app",
-  messagingSenderId: "553366705125",
-  appId: "1:553366705125:web:05b0e20306b4263e43150c"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
